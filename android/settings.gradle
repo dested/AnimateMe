@@ -1,0 +1,3 @@
+rootProject.name = 'AnimateMe'
+
+include ':app'
