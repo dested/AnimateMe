@@ -26,22 +26,24 @@ export default class Layout extends Component {
                 <View style={styles.month}>
                     {month.map(
                         (week, weekIndex) =>
-                            (this.state.selectedWeek === weekIndex || this.state.selectedWeek === -1) && (
-                                <View key={weekIndex} style={styles.week}>
-                                    {week.map((day, dayIndex) => (
-                                        <TouchableOpacity
-                                            onPress={() => this.selectWeek(weekIndex)}
-                                            key={dayIndex}
-                                            style={styles.day}
-                                        >
-                                            <Text>{day}</Text>
-                                        </TouchableOpacity>
-                                    ))}
-                                </View>
-                            )
+                            (this.state.selectedWeek === weekIndex || this.state.selectedWeek === -1) ? (
+                                    <View key={weekIndex} style={styles.week}>
+                                        {week.map((day, dayIndex) => (
+                                            <TouchableOpacity
+                                                onPress={() => this.selectWeek(weekIndex)}
+                                                key={dayIndex}
+                                                style={styles.day}
+                                            >
+                                                <Text style={{fontSize:16}}>{day !== 0 ? day : ''}</Text>
+                                            </TouchableOpacity>
+                                        ))}
+                                    </View>
+                                )
+                                :
+                                <View key={weekIndex}/>
                     )}
                 </View>
-                {[0, 1, 2, 3, 4, 5, 6, 7].map(i => <Card style={{height: 80}} key={i} />)}
+                {[0, 1, 2, 3, 4, 5, 6, 7].map(i => <Card style={{height: 80}} key={i}/>)}
             </ScrollView>
         );
     }
@@ -66,15 +68,21 @@ const styles = StyleSheet.create({
         flexDirection: 'column'
     },
     month: {
-        flexDirection: 'column'
+        flexDirection: 'column',
+        backgroundColor: '#ff8e9a'
     },
     week: {
         flexDirection: 'row',
-        height: square / 7
+        height: square / 7,
+        backgroundColor: '#ff8e9a'
     },
     day: {
         width: square / 7,
         height: square / 7,
-        borderWidth: 2
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderWidth: 2,
+        backgroundColor: '#ff8e9a'
     }
 });

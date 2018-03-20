@@ -26,7 +26,7 @@ export default class Parallax extends Component {
                 ])}
             >
                 <Animated.Image
-                    source={require('./assets/lights.jpg')}
+                    source={require('../assets/lights.jpg')}
                     style={[styles.header, {transform: [{translateY: Animated.divide(this.state.scrollPosition, 2)}]}]}
                 />
                 <Text style={styles.body}>

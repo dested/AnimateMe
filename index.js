@@ -1,8 +1,8 @@
 console.log('1');
 import {AppRegistry, Button, View, UIManager} from 'react-native';
-import Parallax from './Parallax';
+import Parallax from './src/Parallax';
 import React, {Component} from 'react';
-import Layout from './Layout';
+import Layout from './src/Layout';
 
 UIManager.setLayoutAnimationEnabledExperimental && UIManager.setLayoutAnimationEnabledExperimental(true);
 
