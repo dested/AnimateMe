@@ -11,6 +11,8 @@
     "react-native": "0.52.2"
   },
   "devDependencies": {
+    "@types/react": "^16.0.40",
+    "@types/react-native": "^0.52.18",
     "babel-jest": "22.4.1",
     "babel-preset-react-native": "4.0.0",
     "jest": "22.4.2",

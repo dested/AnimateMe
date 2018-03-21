@@ -81,6 +81,7 @@ export default class Layout extends Component {
     }
 
     selectWeek(weekIndex) {
+        LayoutAnimation.configureNext(LayoutAnimation.Presets.linear);
         if (this.state.selectedWeek === -1) {
             this.setState(prev => ({...prev, selectedWeek: weekIndex}));
         } else {

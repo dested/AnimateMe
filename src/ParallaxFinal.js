@@ -6,13 +6,29 @@ export default class Parallax extends Component {
     constructor() {
         super();
 
-        this.state = {};
+        this.state = {
+            scrollPosition: new Animated.Value(0)
+        };
     }
 
     render() {
         return (
-            <ScrollView style={styles.container}>
-                <Image style={styles.header} source={require('../assets/lights.jpg')} />
+            <ScrollView
+                scrollEventThrottle={16}
+                onScroll={Animated.event([
+                    {
+                        nativeEvent: {
+                            contentOffset: {
+                                y: this.state.scrollPosition
+                            }
+                        }
+                    }
+                ])}
+            >
+                <Animated.Image
+                    source={require('../assets/lights.jpg')}
+                    style={[styles.header, {transform: [{translateY: Animated.divide(this.state.scrollPosition, 2)}]}]}
+                />
                 <Text style={styles.body}>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab autem deleniti dicta distinctio fugit
                     illum inventore iusto, laudantium maiores modi neque nisi nostrum perferendis quaerat quidem quis
@@ -50,7 +66,8 @@ export default class Parallax extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1
+        flex: 1,
+        backgroundColor: 'green'
     },
     header: {
         width: '100%',

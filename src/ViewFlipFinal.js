@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import {Button, View} from 'react-native';
+import {Button, Image, ScrollView, StyleSheet, Text, View} from 'react-native';
 import {Animated} from 'react-native';
 
-export default class ComponentFlip extends Component {
+export default class ViewFlip extends Component {
     constructor() {
         super();
 
@@ -20,12 +20,21 @@ export default class ComponentFlip extends Component {
             inputRange: [0, 1],
             outputRange: [0, -200]
         });
+
         return (
             <View style={{flex: 1}}>
                 <View style={{flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'pink'}}>
-                    <FancyComp rotateAnimation={'12deg'} translateXAnimation={10}/>
+                    <Animated.View
+                        style={{
+                            width: 150,
+                            height: 150,
+                            backgroundColor: 'green',
+
+                            transform: [{translateX: translateXAnimation}, {rotate: rotateAnimation}]
+                        }}
+                    />
                 </View>
-                <Button title={'Flip!'} onPress={() => this.flip()}/>
+                <Button title={'Flip!'} onPress={() => this.flip()} />
             </View>
         );
     }
@@ -35,24 +44,7 @@ export default class ComponentFlip extends Component {
         Animated.timing(this.state.flipAnimation, {
             toValue: 1,
             duration: 1500
+            // useNativeDriver: true
         }).start();
-    }
-}
-
-class FancyComp extends Component {
-    render() {
-        return (
-            <View
-                style={{
-                    width: 150,
-                    height: 150,
-                    backgroundColor: 'green',
-                    transform: [
-                        {translateX: this.props.translateXAnimation},
-                        {rotate: this.props.rotateAnimation}
-                    ]
-                }}
-            />
-        );
     }
 }

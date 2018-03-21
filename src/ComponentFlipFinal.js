@@ -23,7 +23,7 @@ export default class ComponentFlip extends Component {
         return (
             <View style={{flex: 1}}>
                 <View style={{flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'pink'}}>
-                    <FancyComp rotateAnimation={'12deg'} translateXAnimation={10}/>
+                    <AnimatedFancyComp rotateAnimation={rotateAnimation} translateXAnimation={translateXAnimation}/>
                 </View>
                 <Button title={'Flip!'} onPress={() => this.flip()}/>
             </View>
@@ -56,3 +56,5 @@ class FancyComp extends Component {
         );
     }
 }
+
+const AnimatedFancyComp = Animated.createAnimatedComponent(FancyComp);
