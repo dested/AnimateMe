@@ -1,8 +1,9 @@
-console.log('1');
 import {AppRegistry, Button, View, UIManager} from 'react-native';
-import Parallax from './src/Parallax';
 import React, {Component} from 'react';
+import ViewFlip from './src/ViewFlip';
+import ComponentFlip from './src/ComponentFlip';
 import Layout from './src/Layout';
+import Parallax from './src/Parallax';
 
 UIManager.setLayoutAnimationEnabledExperimental && UIManager.setLayoutAnimationEnabledExperimental(true);
 
@@ -10,7 +11,7 @@ class Switcher extends Component {
     constructor() {
         super();
         this.state = {
-            selectedPage: 'layout'
+            selectedPage: 'home'
         };
     }
 
@@ -23,17 +24,20 @@ class Switcher extends Component {
             case 'home':
                 return (
                     <View>
-                        <Button onPress={() => this.switchPage('animate')} title={'Animation'} />
-                        <Button onPress={() => this.switchPage('parallax')} title={'Parallax'} />
-                        <Button onPress={() => this.switchPage('layout')} title={'Layout Animation'} />
+                        <Button onPress={() => this.switchPage('viewFlip')} title={'View Flip'}/>
+                        <Button onPress={() => this.switchPage('parallax')} title={'Parallax'}/>
+                        <Button onPress={() => this.switchPage('layout')} title={'Layout Animation'}/>
+                        <Button onPress={() => this.switchPage('componentFlip')} title={'Component Flip'}/>
                     </View>
                 );
             case 'parallax':
-                return <Parallax />;
+                return <Parallax/>;
             case 'layout':
-                return <Layout />;
-            case 'animate':
-                return <Parallax />;
+                return <Layout/>;
+            case 'viewFlip':
+                return <ViewFlip/>;
+            case 'componentFlip':
+                return <ComponentFlip/>;
         }
     }
 
